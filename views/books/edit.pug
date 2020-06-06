@@ -1,0 +1,17 @@
+extends ../layouts/common
+block content
+  h1.text-center Edit Books
+  .container.align-content
+    form(method="POST", action="/books/" + book.id + "/edit")
+      .form-group
+        span Title
+        input(type="text", name="name", value=book.title).form-control
+      .form-group
+        span Description
+        textarea(name="description", rows="3", cols="22").form-control
+          =book.description
+      button.btn.btn-warning Edit
+      |
+      |
+      button.btn.btn-default Cancel
+        a(href="/books")

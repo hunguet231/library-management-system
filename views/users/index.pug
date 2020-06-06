@@ -1,0 +1,31 @@
+extends ../layouts/common
+
+block content
+  h1.text-center Users List
+  .container.align-content
+    form(method="GET", action="/users/search").form-inline
+      .form-group
+        input(type="text", name="q", size="60", value= value).form-control
+        |
+        |
+        button.btn.btn-info Search
+    a(href="/users/create") 
+      button.btn-sm.btn.btn-success Create user
+    table.table
+      thead
+        tr
+          th User
+          th Action
+      tbody
+      each user in users
+        tr
+          if users != []
+            td= user.name
+            td
+              a(href=`/users/${user.id}/view`) View
+            td
+              a(href=`/users/${user.id}/edit`).text-warning Edit
+            td
+              a(href=`/users/${user.id}/delete`).text-danger Delete
+          else
+            td No

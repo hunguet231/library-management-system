@@ -1,0 +1,28 @@
+extends ../layouts/common
+block content
+    h1.text-center Register
+    .container.align-content
+      if errors
+        each error in errors
+          .alert.alert-danger= error
+      form(method="POST", action="/auth/register")
+        .form-group
+          span Name
+          input.form-control(type="text", name="name")
+        .form-group
+          span Email
+          input.form-control(type="text", name="email", value = values ? values.email : "")
+        .form-group
+          span Password
+          input.form-control(type="text", name="password", value = values ? values.password : "" )
+        .form-group
+          span Detail
+          textarea.form-control(name="detail", rows="3", cols="22")
+          br
+          button.btn.btn-success Register
+          p Have an account ? 
+            span Login 
+            span 
+              a(href="/auth/login") here
+      a(href="/")
+        button.btn.btn-default.btn-sm < Go back

@@ -1,0 +1,57 @@
+doctype html
+html(lang='en')
+  head
+    title Library Manager System
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel="icon", type="image/png", href="https://cdn.glitch.com/d9ec8dfc-f9a8-47fd-92bb-23f8592de2e8%2Ffavicon.png?v=1588663098296")
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+    link(rel='stylesheet', href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css')
+    link(rel="stylesheet", href="/css/main.css")
+  body
+    nav.navbar
+        .container-fluid
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/') Logo
+          #myNavbar.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li.active
+                a.text-muted(href='/') Home
+              li
+                a.text-muted(href='/users') Users
+              li
+                a.text-muted(href='/books') Books
+              li
+                a.text-muted(href='/transactions') Transactions
+            ul.nav.navbar-nav.navbar-right
+              if user
+                li
+                  a(href='/users/'+ user._id + '/profile')
+                    span
+                      if user.avatar
+                        img(src=user.avatar, width='32', style='border-radius: 50%')
+                      else
+                        i.fas.fa-user-circle
+                    |
+                    |
+                    span= user.name
+              else
+                li
+                  a(href='/auth/register')
+                    span.glyphicon.glyphicon-user
+                    |  Sign Up
+                li
+                  a(href='/auth/login')
+                    span.glyphicon.glyphicon-log-in
+                    |  Login
+    block content
+    .footer.text-center
+      p Made by Hung with 
+        span.text-danger ❤

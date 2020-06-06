@@ -1,0 +1,17 @@
+extends ../layouts/common
+block content
+  h1.text-center Edit User
+  .container.align-content
+    form(method="POST", action="/users/" + user.id + "/edit")
+      .form-group
+        span Name
+        input(type="text", name="name", value=user.name).form-control
+      .form-group
+        span Detail
+        textarea(name="detail", rows="3", cols="22").form-control
+          =user.detail
+      button.btn.btn-warning Edit
+      |
+      |
+      button.btn.btn-default Cancel
+        a(href="/users")

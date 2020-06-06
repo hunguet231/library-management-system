@@ -1,0 +1,35 @@
+extends ../layouts/common
+block content
+  h1.text-center Transactions
+  .container.align-content
+    form(method="GET", action="/transactions/search")
+      .form-group
+        input(type="text", name="q").form-control
+        |
+        |
+        button.btn.btn-info Search
+    a(href="/transactions/create")
+      button.btn.btn-success Add
+    table.table.table-striped.table-responsive-sm
+      thead
+        tr
+          th User
+          th(colspan="5").text-center Detail
+      tbody
+      each transaction in transactions
+        tr
+          td
+            b= (db.get('users').find({id: transaction.userId}).value() ? db.get('users').find({id: transaction.userId}).value().name : "Not found!")
+          td
+            span borrowed
+          td
+            b= (db.get('books').find({id: transaction.bookId}).value() ? db.get('books').find({id: transaction.bookId}).value().title : "Not found!")
+          td
+            span on
+          td
+            i= transaction.dateBorrow
+          td
+            a(id="status", href="/transactions/"+ transaction.id + "/complete")
+              = (!transaction.isComplete ? "Not returned " : "Returned ✔")
+    a(href="/books")
+      button.btn.btn-default < Go to library

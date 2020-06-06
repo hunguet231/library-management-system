@@ -1,0 +1,30 @@
+extends ./layouts/common
+
+block content
+  h1.text-center Library Management System
+  .container.main-choices
+    .row
+      .col-sm-4
+        .users
+          a(href="/users")
+            .card
+              img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F50426.png?v=1588616612456', alt='Card image cap')
+              .card-body
+                p.card-text
+                  | Users
+      .col-sm-4
+        .transactions
+          a(href="/transactions")
+            .card
+              img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F3286556.png?v=1588616625929', alt='Card image cap')
+              .card-body
+                p.card-text
+                  | Transactions
+      .col-sm-4
+        .books
+          a(href="/books")
+            .card
+              img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F4735.png?v=1588616597126', alt='Card image cap')
+              .card-body
+                p.card-text
+                  | Books

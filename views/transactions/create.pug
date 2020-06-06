@@ -1,0 +1,22 @@
+extends ../layouts/common
+block content
+  h1.text-center Borrow Books
+  .container.align-content
+    form(method="POST", action="/transactions/create")
+      .form-group
+        label(for="name") Name: 
+        select(id="name", name="userId").form-control
+          each user in users
+            option(value=user.id)= user.name
+      .form-group
+        label(for="book") Book: 
+        select(id="book", name="bookId").form-control
+          each book in books
+            option(value=book.id)= book.title
+      .form-group
+          label(for="time") Time: 
+          input(type="date", name ="dateBorrow").form-control
+      button.btn.btn-primary Borrow
+    br
+    a(href="/transactions")
+      button.btn.btn-default < Go back

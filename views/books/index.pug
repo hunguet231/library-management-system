@@ -1,0 +1,42 @@
+extends ../layouts/common
+block content
+  h1.text-center Books List
+  .container.align-content
+    form(method="GET", action="/books/search").form-inline
+      .form-group
+        input(type="text", name="q", size="60").form-control
+        |
+        |
+        button.btn.btn-info Search
+    a(href="/books/create") 
+      button.btn-sm.btn.btn-succss Create book
+    table.table
+      thead
+        tr
+          th Book
+          th Action
+      tbody
+      each book in books
+          tr
+            td= book.title
+            td
+              a(href=`/books/${book.id}/view`) View
+            td
+              a(href=`/books/${book.id}/edit`).text-warning Edit
+            td
+              a(href=`/books/${book.id}/delete`).text-danger Delete
+    ul.pagination
+      li.page-item
+        a.page-link(href='/books?page=1', aria-label='Previous')
+          span(aria-hidden='true') &laquo;
+          span.sr-only Previous
+      li.page-item
+        a.page-link(href='/books?page=1') 1
+      li.page-item
+        a.page-link(href='/books?page=2') 2
+      li.page-item
+        a.page-link(href='/books?page=3') 3
+      li.page-item
+        a.page-link(href='/books?page=' + lastPage, aria-label='Next')
+          span(aria-hidden='true') &raquo;
+          span.sr-only Next

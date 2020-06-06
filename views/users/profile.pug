@@ -1,0 +1,20 @@
+extends ../layouts/common
+block content
+  h1.text-center Update profile
+  .container.align-content
+    form(method="POST", action="/users/" + user.id + "/profile", enctype="multipart/form-data")
+      .form-group
+        span Name
+        input(type="text", name="name", value=user.name).form-control
+      .form-group
+        span Detail
+        textarea(name="detail", rows="3", cols="22").form-control
+          =user.detail
+      .form-group
+        span Avatar
+        input(type="file", name="avatar").form-control-file
+      button.btn.btn-warning Update
+      |
+      |
+      button.btn.btn-default Cancel
+        a(href="/users")

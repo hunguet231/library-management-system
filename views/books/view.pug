@@ -1,0 +1,12 @@
+extends ../layouts/common
+block content
+  h1.text-center= book.title
+  .container.align-content
+    b Name: 
+    span= book.title
+    br
+    b Description: 
+    span= book.description
+    br
+    a(href="/books")
+      button.btn.btn-info.btn-sm  < Go back

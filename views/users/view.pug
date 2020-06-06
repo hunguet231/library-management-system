@@ -1,0 +1,12 @@
+extends ../layouts/common
+block content
+  h1.text-center= user.name
+  .container.align-content
+    b Name: 
+    span= user.name
+    br
+    b Detail: 
+    span= user.detail
+    br
+    a(href="/users")
+      button.btn.btn-info.btn-sm < Go back
