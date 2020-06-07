@@ -1,15 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 let User = require('./models/users.model');
 
-
-// DB config
-const db = require("./config/keys").MongoURI;
-
-// Connect to Mongo
-mongoose
-    .connect(db, { useNewUrlParser: true })
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB Connected..."))
     .catch(err => console.log(err));
 

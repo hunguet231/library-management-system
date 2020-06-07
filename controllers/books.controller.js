@@ -1,15 +1,14 @@
 let Book = require('../models/books.model');
 
-module.exports.index = (req, res) => {
+module.exports.index = async(req, res) => {
     // let page = parseInt(req.query.page) || 1;
     // const perPage = 5;
 
     // const startIndex = (page - 1) * perPage;
     // const endIndex = page * perPage;
-    Book.find().then(function(books) {
-        res.render('books', {
-            books: books
-        });
+    let books = await Book.find();
+    res.render('books', {
+        books
     });
     // res.render("books", {
     //     books //: books.slice(startIndex, endIndex),
@@ -17,7 +16,8 @@ module.exports.index = (req, res) => {
     // });
 };
 
-module.exports.search = (req, res) => {
+module.exports.search = async(req, res) => {
+    let books = await Book.find();
     let q = req.query.q;
     let matchedBooks = books
         .filter(function(item) {
@@ -37,30 +37,30 @@ module.exports.postCreate = (req, res) => {
     res.redirect("/books");
 };
 
-module.exports.view = (req, res) => {
+module.exports.view = async(req, res) => {
     let id = req.params.id;
-    let book = Book.findById(id);
+    let book = await Book.findById(id);
     res.render("books/view", {
         book
     });
 };
 
-module.exports.edit = (req, res) => {
+module.exports.edit = async(req, res) => {
     let id = req.params.id;
-    let book = Book.findById(id);
+    let book = await Book.findById(id);
     res.render("books/edit", {
         book
     });
 };
 
-module.exports.postEdit = (req, res) => {
+module.exports.postEdit = async(req, res) => {
     let id = req.params.id;
-    let book = Book.findByIdAndUpdate(id);
+    let book = await Book.findByIdAndUpdate(id, req.body);
     res.redirect("/books");
 };
 
-module.exports.delete = (req, res) => {
+module.exports.delete = async(req, res) => {
     let id = req.params.id;
-    Book.findByIdAndDelete(id);
+    await Book.findByIdAndDelete(id);
     res.redirect("/books");
 };
