@@ -16,15 +16,19 @@ block content
           th Book
           th Action
       tbody
-      each book in books
+      if books != []
+        each book in books
           tr
             td= book.title
             td
-              a(href=`/books/${book.id}/view`) View
+              a(href=`/books/${book._id}/view`) View
             td
-              a(href=`/books/${book.id}/edit`).text-warning Edit
+              a(href=`/books/${book._id}/edit`).text-warning Edit
             td
-              a(href=`/books/${book.id}/delete`).text-danger Delete
+              a(href=`/books/${book._id}/delete`).text-danger Delete
+      else
+        tr
+          td No books
     ul.pagination
       li.page-item
         a.page-link(href='/books?page=1', aria-label='Previous')
