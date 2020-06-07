@@ -4,12 +4,12 @@ block content
   .container.align-content
     form(method="GET", action="/books/search").form-inline
       .form-group
-        input(type="text", name="q", size="60").form-control
+        input(type="text", name="q", size="60", value= value).form-control
         |
         |
         button.btn.btn-info Search
     a(href="/books/create") 
-      button.btn-sm.btn.btn-succss Create book
+      button.btn-sm.btn.btn-success Create book
     table.table
       thead
         tr
@@ -28,7 +28,7 @@ block content
               a(href=`/books/${book._id}/delete`).text-danger Delete
       else
         tr
-          td No books
+          td No book
     ul.pagination
       li.page-item
         a.page-link(href='/books?page=1', aria-label='Previous')

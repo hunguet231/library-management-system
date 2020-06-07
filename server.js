@@ -31,8 +31,8 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(express.static("public"));
 
 // Index
-app.get("/", (req, res) => {
-    let user = User.findById(req.signedCookies.userId);
+app.get("/", async(req, res) => {
+    let user = await User.findById(req.signedCookies.userId);
     res.render("index", {
         user
     });
@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 // Routers
 app.use("/auth", cookieMiddleware.cookie, require("./routes/auth.route"));
 
-app.use("/books", cookieMiddleware.cookie, require("./routes/books.route"));
+app.use('/books', cookieMiddleware.cookie, require("./routes/books.route"));
 
 app.use(
     "/users",

@@ -1,6 +1,8 @@
 let Book = require('../models/books.model');
+let User = require('../models/users.model');
 
 module.exports.index = async(req, res) => {
+    let user = await User.findById(req.signedCookies.userId);
     // let page = parseInt(req.query.page) || 1;
     // const perPage = 5;
 
@@ -8,7 +10,8 @@ module.exports.index = async(req, res) => {
     // const endIndex = page * perPage;
     let books = await Book.find();
     res.render('books', {
-        books
+        books,
+        user
     });
     // res.render("books", {
     //     books //: books.slice(startIndex, endIndex),
@@ -24,7 +27,8 @@ module.exports.search = async(req, res) => {
             return item.title.toLowerCase().indexOf(q.toLowerCase()) !== -1;
         });
     res.render("books", {
-        books: matchedBooks
+        books: matchedBooks,
+        value: q
     });
 };
 

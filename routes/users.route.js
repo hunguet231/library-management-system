@@ -30,8 +30,8 @@ router.post('/:id/edit', usersController.postEdit);
 router.get('/:id/delete', usersController.delete);
 
 // Update profile
-router.get('/:id/profile', usersController.profile);
+router.get('/profile', usersController.profile);
 
-router.post('/:id/profile', upload.single('avatar'), validate.userCreate, usersController.postProfile);
+router.post('/profile', upload.single('avatar'), validate.userCreate, usersController.postProfile);
 
 module.exports = router;

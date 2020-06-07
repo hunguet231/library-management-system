@@ -5,14 +5,14 @@ block content
     form(method="POST", action="/transactions/create")
       .form-group
         label(for="name") Name: 
-        select(id="name", name="userId").form-control
+        select(id="name", name="user").form-control
           each user in users
-            option(value=user.id)= user.name
+            option(value=user.name)= user.name
       .form-group
         label(for="book") Book: 
-        select(id="book", name="bookId").form-control
+        select(id="book", name="book").form-control
           each book in books
-            option(value=book.id)= book.title
+            option(value=book.title)= book.title
       .form-group
           label(for="time") Time: 
           input(type="date", name ="dateBorrow").form-control

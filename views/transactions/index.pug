@@ -2,9 +2,9 @@ extends ../layouts/common
 block content
   h1.text-center Transactions
   .container.align-content
-    form(method="GET", action="/transactions/search")
+    form(method="GET", action="/transactions/search").form-inline
       .form-group
-        input(type="text", name="q").form-control
+        input(type="text", name="q", size="60", value= value).form-control
         |
         |
         button.btn.btn-info Search
@@ -16,20 +16,23 @@ block content
           th User
           th(colspan="5").text-center Detail
       tbody
-      each transaction in transactions
-        tr
-          td
-            b= (db.get('users').find({id: transaction.userId}).value() ? db.get('users').find({id: transaction.userId}).value().name : "Not found!")
-          td
-            span borrowed
-          td
-            b= (db.get('books').find({id: transaction.bookId}).value() ? db.get('books').find({id: transaction.bookId}).value().title : "Not found!")
-          td
-            span on
-          td
-            i= transaction.dateBorrow
-          td
-            a(id="status", href="/transactions/"+ transaction.id + "/complete")
-              = (!transaction.isComplete ? "Not returned " : "Returned ✔")
+      if transactions.length
+        each transaction in transactions
+          tr
+            td
+              b= transaction.user
+            td
+              span borrowed
+            td
+              b= transaction.book
+            td
+              span on
+            td
+              i= transaction.dateBorrow
+            td
+              a(id="status", href="/transactions/"+ transaction._id + "/complete")
+                = (!transaction.isComplete ? "Not returned " : "Returned ✔")
+      else
+        p No transaction!
     a(href="/books")
       button.btn.btn-default < Go to library
