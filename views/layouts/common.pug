@@ -31,17 +31,21 @@ html(lang='en')
               li
                 a.text-muted(href='/transactions') Transactions
             ul.nav.navbar-nav.navbar-right
-              if user
+              li
+                a(href="")
+                  span
+                    i.fal.fa-cart-plus
+              if userProfile
                 li
                   a(href='/users/profile')
                     span
-                      if user.avatar
-                        img(src=user.avatar, width='32', style='border-radius: 50%')
+                      if userProfile.avatar
+                        img(src=userProfile.avatar, width='32', style='border-radius: 50%')
                       else
                         i.fas.fa-user-circle
                     |
                     |
-                    span= user.name
+                    span= userProfile.name
               else
                 li
                   a(href='/auth/register')

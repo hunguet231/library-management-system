@@ -32,9 +32,9 @@ app.use(express.static("public"));
 
 // Index
 app.get("/", async(req, res) => {
-    let user = await User.findById(req.signedCookies.userId);
+    let userProfile = await User.findById(req.signedCookies.userId);
     res.render("index", {
-        user
+        userProfile
     });
 });
 

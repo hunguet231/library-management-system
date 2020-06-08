@@ -43,21 +43,20 @@ module.exports.view = async(req, res) => {
 };
 
 module.exports.edit = async(req, res) => {
-    let id = req.params.id;
-    let user = await User.findById(id);
+    let user = await User.findById(req.signedCookies.userId);
     res.render("users/edit", {
         user
     });
 };
 
 module.exports.postEdit = async(req, res) => {
-    let id = req.params.id;
+    let id = req.signedCookies.userId;
     await User.findByIdAndUpdate(id, req.body);
     res.redirect("/users");
 };
 
 module.exports.delete = async(req, res) => {
-    let id = req.params.id;
+    let id = req.signedCookies.userId;
     await User.findById(id).remove();
     res.redirect("/users");
 };
@@ -71,7 +70,7 @@ module.exports.profile = async(req, res) => {
 };
 
 module.exports.postProfile = async(req, res) => {
-    let id = req.params.id;
+    let id = req.signedCookies.userId;
 
     req.body.avatar = req.file.path.split("\\").slice(1).join("/");
     await User.findByIdAndUpdate(id, req.body)
