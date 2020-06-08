@@ -5,10 +5,12 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel="icon", type="image/png", href="https://cdn.glitch.com/d9ec8dfc-f9a8-47fd-92bb-23f8592de2e8%2Ffavicon.png?v=1588663098296")
+    
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+
     link(rel='stylesheet', href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css')
     link(rel="stylesheet", href="/css/main.css")
   body
@@ -39,10 +41,7 @@ html(lang='en')
                 li
                   a(href='/users/profile')
                     span
-                      if userProfile.avatar
-                        img(src=userProfile.avatar, width='32', style='border-radius: 50%')
-                      else
-                        i.fas.fa-user-circle
+                      img(src= (userProfile.avatar.indexOf('upload') != -1) ? '/' + userProfile.avatar : userProfile.avatar, width='32', style='border-radius: 50%')
                     |
                     |
                     span= userProfile.name

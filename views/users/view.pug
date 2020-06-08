@@ -2,7 +2,7 @@ extends ../layouts/common
 block content
   h1.text-center= user.name
   .container.align-content
-    img(src=user.avatar, width='200')
+    img(src= (user.avatar.indexOf('upload') != -1) ? '/' + user.avatar : user.avatar, width='200')
     br
     b Name: 
     span= user.name

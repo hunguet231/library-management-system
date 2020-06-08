@@ -10,22 +10,24 @@ block content
         button.btn.btn-info Search
     a(href="/books/create") 
       button.btn-sm.btn.btn-success Create book
-    table.table
+    table.table.table-hover
       thead
         tr
           th Book
-          th Action
+          th.text-center Action
       tbody
       if books.length 
         each book in books
           tr
-            td= book.title
             td
-              a(href=`/books/${book._id}/view`) View
-            td
-              a(href=`/books/${book._id}/edit`).text-warning Edit
-            td
-              a(href=`/books/${book._id}/delete`).text-danger Delete
+              img(src=book.cover, width='42')
+              |
+              |
+              span= book.title
+            td(colspan='3').action
+              a(href=`/books/${book._id}/view`).btn.btn-sm.btn-info View
+              a(href=`/books/${book._id}/edit`).btn.btn-sm.btn-warning Edit
+              a(href=`/books/${book._id}/delete`).btn.btn-sm.btn-danger Delete
       else
         tr
           td No book

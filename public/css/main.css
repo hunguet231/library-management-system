@@ -1,3 +1,9 @@
+    html {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -o-box-sizing: border-box;
+    }
+    
     .icon-bar {
         background-color: black;
     }
@@ -71,4 +77,10 @@
     .fa-cart-plus {
         font-size: 30px;
         color: #2d2d2d;
+    }
+    
+    .action {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }

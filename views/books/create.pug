@@ -2,17 +2,21 @@ extends ../layouts/common
 block content
   h1.text-center Create Book
   .container.align-content
-    form(method="POST", action="/books/create")
+    form(method="POST", action="/books/create", enctype="multipart/form-data")
       .form-group
-        span Title
+        span Title:
         input.form-control(type="text", name="title")
       .form-group
-        span Description
+        span Description:
         textarea.form-control(name="description", rows="3", cols="22")
+      .form-group
+        span Cover:
+        input(type="file", name="cover").form-control-file
         br
         button.btn.btn-success Create
     a(href="/books")
-      button.btn.btn-default.btn-sm < Go back
+      button.btn.btn-default.btn-sm
+        i.fas.fa-arrow-left  Go back
     
     
     

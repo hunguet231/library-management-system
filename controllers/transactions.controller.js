@@ -13,7 +13,7 @@ module.exports.index = async(req, res) => {
         });
     } else {
         res.render('transactions', {
-            transactions: transactions.filter(trans => trans.userId == req.signedCookies.userId)
+            transactions: transactions.filter(trans => trans.user == user.name)
         });
     }
 };
@@ -60,10 +60,12 @@ module.exports.isComplete = async(req, res) => {
     if (!flag) {
         res.send('Invalid! Transaction ID not found.');
     } else {
+        let userProfile = await User.findById(req.signedCookies.userId);
         let transactions = await Transaction.find();
         await Transaction.findByIdAndUpdate(id, { isComplete: true });
         res.render('transactions', {
-            transactions
+            transactions,
+            userProfile
         });
     };
 };

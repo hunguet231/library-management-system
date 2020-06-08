@@ -10,13 +10,15 @@ module.exports.index = async(req, res) => {
 
 module.exports.search = async(req, res) => {
     let users = await User.find();
+    let userProfile = await User.findById(req.signedCookies.userId);
     let q = req.query.q;
     let matchedUsers = users.filter(function(user) {
         return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
     });
     res.render("users", {
         users: matchedUsers,
-        value: q
+        value: q,
+        userProfile
     });
 };
 
@@ -29,8 +31,8 @@ module.exports.postCreate = async(req, res) => {
     bcrypt.hash(password, 10, async function(err, hash) {
         // Store hash in your password DB.
         req.body.password = hash;
+        await User.create(req.body);
     });
-    await User.create(req.body);
     res.redirect("/users");
 };
 
@@ -43,21 +45,21 @@ module.exports.view = async(req, res) => {
 };
 
 module.exports.edit = async(req, res) => {
-    let user = await User.findById(req.signedCookies.userId);
+    let user = await User.findById(req.params.id);
     res.render("users/edit", {
         user
     });
 };
 
 module.exports.postEdit = async(req, res) => {
-    let id = req.signedCookies.userId;
+    let id = req.params.id;
     await User.findByIdAndUpdate(id, req.body);
     res.redirect("/users");
 };
 
 module.exports.delete = async(req, res) => {
-    let id = req.signedCookies.userId;
-    await User.findById(id).remove();
+    let id = req.params.id;
+    await User.findByIdAndRemove(id);
     res.redirect("/users");
 };
 

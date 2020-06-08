@@ -10,29 +10,31 @@ block content
         button.btn.btn-info Search
     a(href="/transactions/create")
       button.btn.btn-success Add
-    table.table.table-striped.table-responsive-sm
-      thead
-        tr
-          th User
-          th(colspan="5").text-center Detail
-      tbody
-      if transactions.length
-        each transaction in transactions
+    .table-responsive-sm
+      table.table.table-striped.table-bordered.table-hover
+        thead
           tr
-            td
-              b= transaction.user
-            td
-              span borrowed
-            td
-              b= transaction.book
-            td
-              span on
-            td
-              i= transaction.dateBorrow
-            td
-              a(id="status", href="/transactions/"+ transaction._id + "/complete")
-                = (!transaction.isComplete ? "Not returned " : "Returned ✔")
-      else
-        p No transaction!
+            th User
+            th(colspan="4").text-center Detail
+            th Returned
+        tbody
+        if transactions.length
+          each transaction in transactions
+            tr
+              td
+                b= transaction.user
+              td
+                span borrowed
+              td
+                b= transaction.book
+              td
+                span on
+              td
+                i= transaction.dateBorrow
+              td.text-center
+                a(id="status", href="/transactions/"+ transaction._id + "/complete")
+                  = (!transaction.isComplete ? "❌" : "✔")
+        else
+          p No transaction!
     a(href="/books")
       button.btn.btn-default < Go to library

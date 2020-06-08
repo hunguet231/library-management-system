@@ -39,8 +39,9 @@ module.exports.create = async(req, res) => {
     });
 };
 
-module.exports.postCreate = (req, res) => {
-    Book.create(req.body);
+module.exports.postCreate = async(req, res) => {
+    req.body.cover = req.file.path.split("\\").slice(1).join("/");
+    await Book.create(req.body);
     res.redirect("/books");
 };
 
@@ -66,7 +67,10 @@ module.exports.edit = async(req, res) => {
 
 module.exports.postEdit = async(req, res) => {
     let id = req.params.id;
-    let book = await Book.findByIdAndUpdate(id, req.body);
+    if (req.file) {
+        req.body.cover = req.file.path.split("\\").slice(1).join("/");
+        await Book.findByIdAndUpdate(id, req.body);
+    }
     res.redirect("/books");
 };
 

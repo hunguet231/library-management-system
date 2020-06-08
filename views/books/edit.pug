@@ -2,7 +2,7 @@ extends ../layouts/common
 block content
   h1.text-center Edit Books
   .container.align-content
-    form(method="POST", action="/books/" + book.id + "/edit")
+    form(method="POST", action="/books/" + book._id + "/edit", enctype="multipart/form-data")
       .form-group
         span Title
         input(type="text", name="name", value=book.title).form-control
@@ -10,6 +10,9 @@ block content
         span Description
         textarea(name="description", rows="3", cols="22").form-control
           =book.description
+      .form-group
+        span Cover:
+        input(type="file", name="cover").form-control-file
       button.btn.btn-warning Edit
       |
       |

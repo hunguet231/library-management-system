@@ -2,6 +2,8 @@ extends ../layouts/common
 block content
   h1.text-center= book.title
   .container.align-content
+    img(src= '/' + book.cover, width='200')
+    br
     b Title: 
     span= book.title
     br
