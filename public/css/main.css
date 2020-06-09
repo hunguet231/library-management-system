@@ -74,13 +74,93 @@
         list-style-type: none;
     }
     
-    .fa-cart-plus {
-        font-size: 30px;
-        color: #2d2d2d;
-    }
-    
     .action {
         display: flex;
         justify-content: space-around;
         align-items: center;
+    }
+    
+    .action a {
+        margin-top: 13px;
+    }
+    
+    @keyframes rainbow {
+        0% {
+            color: red;
+        }
+        17% {
+            color: #ff0;
+        }
+        33% {
+            color: #0f0
+        }
+        50% {
+            color: #0ff
+        }
+        67% {
+            color: #00f
+        }
+        84% {
+            color: #f0f
+        }
+        100% {
+            color: red
+        }
+    }
+    
+    .text-rainbow {
+        font-weight: bold;
+        animation-name: rainbow;
+        -webkit-animation-name: rainbow;
+        color: #fff;
+        animation-duration: 6s;
+        -webkit-animation-duration: 6s;
+        animation-timing-function: linear;
+        -webkit-animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+    }
+    
+    .text-bold {
+        font-weight: bold;
+    }
+    
+    .fa-cart-plus {
+        color: green;
+        font-size: 20px;
+    }
+    
+    .fa-sign-out {
+        color: dodgerblue;
+        font-weight: bold;
+    }
+    
+    .fa-user-circle {
+        color: dodgerblue;
+        font-weight: bold;
+    }
+    
+    .userProfile {
+        color: dodgerblue;
+        font-weight: bolder;
+    }
+    
+    .user-menu {
+        margin-top: 13px;
+    }
+    
+    .fas {
+        font-size: 20px;
+    }
+    
+    .fa-eye {
+        color: rebeccapurple;
+    }
+    
+    .fa-edit {
+        color: orange;
+    }
+    
+    .fa-trash-alt {
+        color: red;
     }

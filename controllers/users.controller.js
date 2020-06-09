@@ -53,7 +53,10 @@ module.exports.edit = async(req, res) => {
 
 module.exports.postEdit = async(req, res) => {
     let id = req.params.id;
-    await User.findByIdAndUpdate(id, req.body);
+    if (req.file) {
+        req.body.avatar = req.file.path.split("\\").slice(1).join("/");
+    }
+    await User.findByIdAndUpdate(id, req.body)
     res.redirect("/users");
 };
 
@@ -73,8 +76,14 @@ module.exports.profile = async(req, res) => {
 
 module.exports.postProfile = async(req, res) => {
     let id = req.signedCookies.userId;
-
-    req.body.avatar = req.file.path.split("\\").slice(1).join("/");
+    if (req.file) {
+        req.body.avatar = req.file.path.split("\\").slice(1).join("/");
+    }
     await User.findByIdAndUpdate(id, req.body)
     res.redirect("../");
 };
+
+module.exports.logout = async(req, res) => {
+    req.logout();
+    res.redirect('/');
+}

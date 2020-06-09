@@ -69,9 +69,9 @@ module.exports.postEdit = async(req, res) => {
     let id = req.params.id;
     if (req.file) {
         req.body.cover = req.file.path.split("\\").slice(1).join("/");
-        await Book.findByIdAndUpdate(id, req.body);
     }
-    res.redirect("/books");
+    await Book.findByIdAndUpdate(id, req.body);
+    res.redirect('/books');
 };
 
 module.exports.delete = async(req, res) => {

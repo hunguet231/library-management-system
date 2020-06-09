@@ -24,10 +24,13 @@ block content
               img(src= user.avatar, width='42', style= 'border-radius: 50%')
               |
               |
-              span= user.name
+              if user.isAdmin
+                span.text-rainbow= user.name
+              else
+                span.text-bold= user.name
             td(colspan='3').action
-              a(href=`/users/${user._id}/view`).btn.btn-sm.btn-info View
-              a(href=`/users/${user._id}/edit`).btn.btn-sm.btn-warning Edit
-              a(href=`/users/${user._id}/delete`).btn.btn-sm.btn-danger Delete
+              a(href=`/users/${user._id}/view`, title='View').fas.fa-eye
+              a(href=`/users/${user._id}/edit`, title='Edit').fas.fa-edit
+              a(href=`/users/${user._id}/delete`, title='Delete').fas.fa-trash-alt
           else
             td No user!

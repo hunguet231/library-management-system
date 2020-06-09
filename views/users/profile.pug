@@ -2,7 +2,7 @@ extends ../layouts/common
 block content
   h1.text-center Update profile
   .container.align-content
-    form(method="POST", action="/users/" + user._id + "/profile", enctype="multipart/form-data")
+    form(method="POST", action="/users/profile", enctype="multipart/form-data")
       .form-group
         span Name
         input(type="text", name="name", value=user.name).form-control
@@ -16,5 +16,5 @@ block content
       button.btn.btn-warning Update
       |
       |
-      button.btn.btn-default Cancel
-        a(href="/users")
+      a(href="/users")
+        button.btn.btn-default Cancel

@@ -34,22 +34,38 @@ html(lang='en')
                 a.text-muted(href='/transactions') Transactions
             ul.nav.navbar-nav.navbar-right
               li
-                a(href="")
-                  span
-                    i.fal.fa-cart-plus
+                a(href="/cart")
+                  i.fal.fa-cart-plus
               if userProfile
                 li
-                  a(href='/users/profile')
-                    span
-                      img(src= (userProfile.avatar.indexOf('upload') != -1) ? '/' + userProfile.avatar : userProfile.avatar, width='32', style='border-radius: 50%')
-                    |
-                    |
-                    span= userProfile.name
+                  .dropdown.user-menu
+                    .dropdown-toggle(data-toggle='dropdown')
+                      span
+                        img(src= (userProfile.avatar.indexOf('upload') != -1) ? '/' + userProfile.avatar : userProfile.avatar, width='32', style='border-radius: 50%')
+                      span.caret
+                    ul.dropdown-menu
+                      li
+                        a
+                          span.userProfile= userProfile.name
+                      li
+                        a(href='/users/profile')
+                          span
+                            i.far.fa-user-circle
+                          |
+                          |
+                          span Profile
+                      li
+                        a(href='/users/logout')
+                          span
+                            i.fal.fa-sign-out
+                          |
+                          |
+                          span Log out
               else
                 li
                   a(href='/auth/register')
                     span.glyphicon.glyphicon-user
-                    |  Sign Up
+                    |  Register
                 li
                   a(href='/auth/login')
                     span.glyphicon.glyphicon-log-in

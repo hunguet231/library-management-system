@@ -13,7 +13,7 @@ block content
     table.table.table-hover
       thead
         tr
-          th Book
+          th.text-center Book
           th.text-center Action
       tbody
       if books.length 
@@ -24,10 +24,12 @@ block content
               |
               |
               span= book.title
-            td(colspan='3').action
-              a(href=`/books/${book._id}/view`).btn.btn-sm.btn-info View
-              a(href=`/books/${book._id}/edit`).btn.btn-sm.btn-warning Edit
-              a(href=`/books/${book._id}/delete`).btn.btn-sm.btn-danger Delete
+            if userProfile.isAdmin
+              td(colspan='4').action
+                a(href=`/books/${book._id}/view`, title='View').fas.fa-eye
+                a(href=`/books/${book._id}/edit`, title='Edit').fas.fa-edit
+                a(href=`/books/${book._id}/delete`, title='Delete').fas.fa-trash-alt
+                a(href=`/books/${book._id}/addtocart`, title='Add to cart').fad.fa-cart-plus
       else
         tr
           td No book

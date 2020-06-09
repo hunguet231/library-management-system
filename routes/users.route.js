@@ -24,7 +24,7 @@ router.get('/:id/view', usersController.view);
 // Edit User
 router.get('/:id/edit', usersController.edit);
 
-router.post('/:id/edit', usersController.postEdit);
+router.post('/:id/edit', upload.single('avatar'), usersController.postEdit);
 
 // Delete User
 router.get('/:id/delete', usersController.delete);
@@ -33,5 +33,7 @@ router.get('/:id/delete', usersController.delete);
 router.get('/profile', usersController.profile);
 
 router.post('/profile', upload.single('avatar'), validate.userCreate, usersController.postProfile);
+
+router.get('/logout', usersController.logout);
 
 module.exports = router;
