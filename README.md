@@ -1,7 +1,7 @@
 # Library Management System
 A Simple Nodejs project - CodersX
 ## Overview
--Feature: CRUD Books, Users, Transactions, Shoping and create your own shop.
+-Features: CRUD Books, Users, Transactions, Shoping and create your own shop.
 ## Technology:
 * Nodejs Express
 * MongoDB
