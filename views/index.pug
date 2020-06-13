@@ -1,30 +1,61 @@
 extends ./layouts/common
 
 block content
-  h1.text-center Library Management System
+  #myCarousel.carousel.slide.carousel-fade(data-ride='carousel')
+    ol.carousel-indicators
+      li.active(data-target='#myCarousel', data-slide-to='0')
+      li(data-target='#myCarousel', data-slide-to='1')
+      li(data-target='#myCarousel', data-slide-to='2')
+    .carousel-inner
+      .item.active
+        img(src='https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg', alt='Fast', style='width:100%;')
+        .carousel-caption
+          h3 Fast
+          p Just click to borrow book.
+      .item
+        img(src='https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg', alt='Smart', style='width:100%;')
+        .carousel-caption
+          h3 Smart
+          p Manage your own shop!
+      .item
+        img(src='https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg', alt='Easy', style='width:100%;')
+        .carousel-caption
+          h3 Easy
+          p Easy to use.
+    a.left.carousel-control(href='#myCarousel', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left
+      span.sr-only Previous
+    a.right.carousel-control(href='#myCarousel', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right
+      span.sr-only Next
+  .header
+    h1.text-center Library Management System
   .container.main-choices
     .row
       .col-sm-4
-        .users
-          a(href="/users")
-            .card
-              img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F50426.png?v=1588616612456', alt='Card image cap')
-              .card-body
-                p.card-text
-                  | Users
+        a(href="/users")
+          .card
+            .overlay
+            p Manage Your Users
+            img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F50426.png?v=1588616612456', alt='Card image cap')
+            .card-body
+              p.card-text
+                | Users
       .col-sm-4
-        .transactions
-          a(href="/transactions")
-            .card
-              img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F3286556.png?v=1588616625929', alt='Card image cap')
-              .card-body
-                p.card-text
-                  | Transactions
+        a(href="/transactions")
+          .card
+            .overlay
+            p View Transactions
+            img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F3286556.png?v=1588616625929', alt='Card image cap')
+            .card-body
+              p.card-text
+                | Transactions
       .col-sm-4
-        .books
-          a(href="/books")
-            .card
-              img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F4735.png?v=1588616597126', alt='Card image cap')
-              .card-body
-                p.card-text
-                  | Books
+        a(href="/books")
+          .card
+            .overlay
+            p Borrow Books
+            img.card-img-top(src='https://cdn.glitch.com/5a0ef4a4-6f67-4377-bca0-d8d903ddf44c%2F4735.png?v=1588616597126', alt='Card image cap')
+            .card-body
+              p.card-text
+                | Books

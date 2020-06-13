@@ -4,8 +4,14 @@ block content
   .container.align-content
     form(method="POST", action="/users/profile", enctype="multipart/form-data")
       .form-group
+        span
+          img(src= (user.avatar.indexOf('upload') != -1) ? '/'+user.avatar : user.avatar, alt="Avatar", width='200')
+      .form-group
         span Name
         input(type="text", name="name", value=user.name).form-control
+      .form-group
+        span Email
+        input(type="text", name="email", value=user.email).form-control
       .form-group
         span Detail
         textarea(name="detail", rows="3", cols="22").form-control

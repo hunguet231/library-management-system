@@ -7,7 +7,10 @@ let BookSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    loves: Number,
+    loves: {
+        type: Number,
+        default: 0
+    },
     genre: String
 });
 

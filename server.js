@@ -38,6 +38,7 @@ app.get("/", async(req, res) => {
     });
 });
 
+app.use(require('./middlewares/session'));
 // Routers
 app.use("/auth", cookieMiddleware.cookie, require("./routes/auth.route"));
 
@@ -56,6 +57,8 @@ app.use(
     authMiddleware.requireAuth,
     require("./routes/transactions.route")
 );
+
+app.use("/cart", require("./routes/cart.route"));
 
 const PORT = process.env.PORT || 5000
     // listen for requests :)

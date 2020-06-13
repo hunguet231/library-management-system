@@ -20,6 +20,7 @@ module.exports.index = async(req, res) => {
 };
 
 module.exports.search = async(req, res) => {
+    let userProfile = await User.findById(req.signedCookies.userId);
     let books = await Book.find();
     let q = req.query.q;
     let matchedBooks = books
@@ -28,7 +29,8 @@ module.exports.search = async(req, res) => {
         });
     res.render("books", {
         books: matchedBooks,
-        value: q
+        value: q,
+        userProfile
     });
 };
 

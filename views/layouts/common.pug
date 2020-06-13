@@ -14,62 +14,64 @@ html(lang='en')
     link(rel='stylesheet', href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css')
     link(rel="stylesheet", href="/css/main.css")
   body
-    nav.navbar
-        .container-fluid
-          .navbar-header
-            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a.navbar-brand(href='/') Logo
-          #myNavbar.collapse.navbar-collapse
-            ul.nav.navbar-nav
-              li.active
-                a.text-muted(href='/') Home
-              li
-                a.text-muted(href='/users') Users
-              li
-                a.text-muted(href='/books') Books
-              li
-                a.text-muted(href='/transactions') Transactions
-            ul.nav.navbar-nav.navbar-right
-              li
-                a(href="/cart")
-                  i.fal.fa-cart-plus
-              if userProfile
+    .header
+      nav.navbar.navbar-fixed-top
+          .container-fluid
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              a(href='/').navbar-brand
+                img(src='https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/205/thumb/javascriptlang.png', width='30', style='margin-top: -5px;')
+            #myNavbar.collapse.navbar-collapse
+              ul.nav.navbar-nav.nav-left
+                li.active
+                  a.text-muted(href='/') Home
                 li
-                  .dropdown.user-menu
-                    .dropdown-toggle(data-toggle='dropdown')
-                      span
-                        img(src= (userProfile.avatar.indexOf('upload') != -1) ? '/' + userProfile.avatar : userProfile.avatar, width='32', style='border-radius: 50%')
-                      span.caret
-                    ul.dropdown-menu
-                      li
-                        a
-                          span.userProfile= userProfile.name
-                      li
-                        a(href='/users/profile')
-                          span
-                            i.far.fa-user-circle
-                          |
-                          |
-                          span Profile
-                      li
-                        a(href='/users/logout')
-                          span
-                            i.fal.fa-sign-out
-                          |
-                          |
-                          span Log out
-              else
+                  a.text-muted(href='/users') Users
                 li
-                  a(href='/auth/register')
-                    span.glyphicon.glyphicon-user
-                    |  Register
+                  a.text-muted(href='/books') Books
                 li
-                  a(href='/auth/login')
-                    span.glyphicon.glyphicon-log-in
-                    |  Login
+                  a.text-muted(href='/transactions') Transactions
+              ul.nav.navbar-nav.navbar-right
+                li
+                  a(href="/cart")
+                    i.fal.fa-cart-plus
+                if userProfile
+                  li
+                    .dropdown.user-menu
+                      .dropdown-toggle(data-toggle='dropdown')
+                        span
+                          img(src= (userProfile.avatar.indexOf('upload') != -1) ? '/' + userProfile.avatar : userProfile.avatar, width='32', style='border-radius: 50%')
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a
+                            span.userProfile= userProfile.name
+                        li
+                          a(href='/users/profile').item
+                            span
+                              i.far.fa-user-circle
+                            |
+                            |
+                            span Profile
+                        li
+                          a(href='/users/logout').item
+                            span
+                              i.fal.fa-sign-out
+                            |
+                            |
+                            span Log out
+                else
+                  li
+                    a(href='/auth/register')
+                      span.glyphicon.glyphicon-user
+                      |  Register
+                  li
+                    a(href='/auth/login')
+                      span.glyphicon.glyphicon-log-in
+                      |  Login
     block content
     .footer.text-center
       p Made by Hung with 

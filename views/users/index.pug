@@ -5,13 +5,18 @@ block content
   .container.align-content
     form(method="GET", action="/users/search").form-inline
       .form-group
-        input(type="text", name="q", size="60", value= value).form-control
+        input(type="text", name="q", size="65", value= value).form-control
         |
         |
-        button.btn.btn-info Search
+        button.btn
+          i.fas.fa-search
     a(href="/users/create") 
-      button.btn-sm.btn.btn-success Create user
-    table.table.table-hover
+      button.btn.btn-info
+            i.fal.fa-layer-plus
+            |
+            |
+            span Create User
+    table.table.table-hover.table-striped
       thead
         tr
           th(colspan='2').text-center User
@@ -21,16 +26,23 @@ block content
         tr
           if users.length
             td(colspan='2')
-              img(src= user.avatar, width='42', style= 'border-radius: 50%')
-              |
-              |
-              if user.isAdmin
-                span.text-rainbow= user.name
-              else
-                span.text-bold= user.name
+              a(href="/users/"+user._id+"/view")
+                img(src= (user.avatar.indexOf('upload') != -1) ? '/'+ user.avatar : user.avatar, width='42', style= 'border-radius: 50%')
+                |
+                |
+                if user.isAdmin
+                  span.text-rainbow= user.name
+                  |
+                  |
+                  i.fas.fa-medal
+                else
+                  span.text-bold.text-muted= user.name
+                  |
+                  |
+                  i.fas.fa-medal.fa-medal-normal
             td(colspan='3').action
               a(href=`/users/${user._id}/view`, title='View').fas.fa-eye
-              a(href=`/users/${user._id}/edit`, title='Edit').fas.fa-edit
+              a(href=`/users/${user._id}/edit`, title='Edit').fas.fa-user-edit
               a(href=`/users/${user._id}/delete`, title='Delete').fas.fa-trash-alt
           else
             td No user!
