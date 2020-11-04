@@ -1,5 +1,5 @@
 # Library Management System
-A Simple Nodejs project - CodersX
+A Simple Nodejs project
 ## Overview
 -Features: CRUD Books, Users, Transactions, Shoping and create your own shop.
 ## Technology:
@@ -7,5 +7,3 @@ A Simple Nodejs project - CodersX
 * MongoDB
 * Pug Engine
 * HTML, CSS, JS
-## View
-Link: 
